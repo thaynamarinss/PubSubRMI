@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PubSubClient {
     private static final String SERVER_URL = "rmi://localhost:1099/PubSubServer";
-    private static final String EXIT_OPTION = "0";
+    //private static final String EXIT_OPTION = "0";
 
     private PubSubInterface server;
     private Scanner scanner;
@@ -36,15 +36,13 @@ public class PubSubClient {
             switch (option) {
                 case "1":
                     subscribeTopic();
-                    break;
+                    break;          
                 case "2":
-                    unsubscribeTopic();
-                    break;
-                case "3":
                     publishMessage();
                     break;
                 case "0":
                     exit = true;
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Opcao invalida. Tente novamente.");
@@ -58,8 +56,7 @@ public class PubSubClient {
     private void printMenu() {
         System.out.println("\n--- Menu ---");
         System.out.println("1. Inscrever em um topico");
-        System.out.println("2. Desinscrever de um topico");
-        System.out.println("3. Publicar uma mensagem");
+        System.out.println("2. Publicar uma mensagem");
         System.out.println("0. Sair");
         System.out.print("Escolha uma opcao: \n");
     }
@@ -82,19 +79,6 @@ public class PubSubClient {
     }
     
         
-
-    private void unsubscribeTopic() {
-        System.out.print("Digite o nome do topico para desinscrever: ");
-        String topic = scanner.nextLine();
-
-        try {
-            SubscriberInterface subscriber = new Subscriber(subscriberName);
-            server.unsubscribeFromTopic(topic, subscriber);
-            System.out.println("Voce nao participa mais do topico: " + topic);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private void publishMessage() {
         System.out.print("Qual topico vocer publicar?: ");

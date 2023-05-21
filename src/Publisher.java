@@ -20,17 +20,13 @@ public class Publisher extends UnicastRemoteObject implements PubSubInterface {
         subscribeToTopic("default", subscriber);
     }
 
-    @Override
-    public void unsubscribe(SubscriberInterface subscriber) throws RemoteException {
-        unsubscribeFromTopic("default", subscriber);
-    }
 
     @Override
     public void publish(String message) throws RemoteException {
         System.out.println("Publicando mensagem: " + message);
         String[] parts = message.split(":");
         String topic = parts[0];
-        //String data = parts[1];
+     
 
         if (subscribersByTopic.containsKey(topic)) {
             List<SubscriberInterface> subscribers = subscribersByTopic.get(topic);
@@ -40,13 +36,6 @@ public class Publisher extends UnicastRemoteObject implements PubSubInterface {
         }
 
 
-/* 
-        System.out.println("Publicando mensagem: " + message);
-        for (List<SubscriberInterface> subscribers : subscribersByTopic.values()) {
-            for (SubscriberInterface subscriber : subscribers) {
-                subscriber.update(message);
-            }
-        }*/
     }
 
     @Override
@@ -58,14 +47,7 @@ public class Publisher extends UnicastRemoteObject implements PubSubInterface {
         System.out.println("Assinante " + subscriber.getName() + " inscrito no tópico: " + topic);
     }
 
-    @Override
-    public void unsubscribeFromTopic(String topic, SubscriberInterface subscriber) throws RemoteException {
-        List<SubscriberInterface> subscribers = subscribersByTopic.getOrDefault(topic, new ArrayList<>());
-        subscribers.remove(subscriber);
-        subscribersByTopic.put(topic, subscribers);
-        System.out.println("Assinante " + subscriber.getName() + " removido do tópico: " + topic);
-    }
-
+   
     // Método para criar informações para um tópico específico
     public synchronized void createTopicData(String topic, String data) {
         topicData.put(topic, data);
