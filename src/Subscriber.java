@@ -1,16 +1,12 @@
-import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class Subscriber extends UnicastRemoteObject implements SubscriberInterface {
     private String name;
  
     private List<String> subscribedTopics;
-
 
     public Subscriber(String name) throws RemoteException {
         super();
@@ -21,7 +17,6 @@ public class Subscriber extends UnicastRemoteObject implements SubscriberInterfa
     public String getName() {
         return name;
     }
-
 
     @Override
     public void update(String message) throws RemoteException {       
@@ -36,12 +31,6 @@ public class Subscriber extends UnicastRemoteObject implements SubscriberInterfa
         } else {
             System.out.println("Mensagem inválida: " + message);
         }
-    }
-    
-        
- 
-    public List<String> getSubscribedTopics() throws RemoteException {
-        return subscribedTopics;
     }
 
     public void setSubscribedTopics(List<String> topics) throws RemoteException {

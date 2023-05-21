@@ -77,8 +77,6 @@ public class PubSubClient {
             e.printStackTrace();
         }
     }
-    
-        
 
     private void publishMessage() {
         System.out.print("Qual topico vocer publicar?: ");
