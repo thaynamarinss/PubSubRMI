@@ -1,16 +1,18 @@
-Esse trabalho foi realizado por Thayná Marins e Júlia Miranda. 
+This project was made by Thayná Marins and Júlia Miranda. 
 
-## Folder Structure
+To run follow this steps:
+1º Terminal:
+    run:
+        javac Publisher.java PubSubClient.java PublisherInterface.java PubSubServer.java Subscriber.java SubscriberInterface.java
+    
+        rmiregistry
 
-The workspace contains two folders by default, where:
+2º Terminal:
+    run:
+        java PubSubServer
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+3º Terminal:
+    run:
+        java PubSubClient
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Obs: For the PubSubClient you can create more terminals.
