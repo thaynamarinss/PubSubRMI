@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Publisher extends UnicastRemoteObject implements PubSubInterface {
+public class Publisher extends UnicastRemoteObject implements PublisherInterface {
     private Map<String, List<SubscriberInterface>> subscribersByTopic;
 
     public Publisher() throws RemoteException {

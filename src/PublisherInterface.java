@@ -1,7 +1,7 @@
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface PubSubInterface extends Remote {
+public interface PublisherInterface extends Remote {
     void subscribe(SubscriberInterface subscriber) throws RemoteException;
     void publish(String message) throws RemoteException;
     void subscribeToTopic(String topic, SubscriberInterface subscriber) throws RemoteException;   

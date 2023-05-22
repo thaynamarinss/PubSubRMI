@@ -7,14 +7,14 @@ public class PubSubClient {
     private static final String SERVER_URL = "rmi://localhost:1099/PubSubServer";
     //private static final String EXIT_OPTION = "0";
 
-    private PubSubInterface server;
+    private PublisherInterface publisher;
     private Scanner scanner;
     private String subscriberName;
  
 
     public PubSubClient() {
         try {
-            server = (PubSubInterface) Naming.lookup(SERVER_URL);
+            publisher = (PublisherInterface) Naming.lookup(SERVER_URL);
             scanner = new Scanner(System.in);
             subscriberName = "";
 
@@ -71,7 +71,7 @@ public class PubSubClient {
             List<String> subscribedTopics = new ArrayList<>();
             subscribedTopics.add(topic); // Adiciona o tópico à lista de tópicos inscritos
             subscriber.setSubscribedTopics(subscribedTopics); // Define a lista de tópicos inscritos do assinante
-            server.subscribeToTopic(topic, subscriber);
+            publisher.subscribeToTopic(topic, subscriber);
             System.out.println("Voce foi inscrito no seguinte topico: " + topic);
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class PubSubClient {
         String messagePassa = topic+':'+message;
 
         try {
-            server.publish(messagePassa);
+            publisher.publish(messagePassa);
             System.out.println("mensagem publicada no topico: " + topic);
         } catch (Exception e) {
             e.printStackTrace();

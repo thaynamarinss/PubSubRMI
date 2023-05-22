@@ -3,7 +3,7 @@ import java.rmi.registry.Registry;
 public class PubSubServer {
     public static void main(String[] args) {
         try {
-            PubSubInterface publisher = new Publisher();
+            PublisherInterface publisher = new Publisher();
             Registry registry = LocateRegistry.getRegistry(); // Obter referência para o registro RMI existente
             registry.rebind("PubSubServer", publisher);
 
